@@ -29,7 +29,7 @@ rm ~/Marzban-node/docker-compose.yml
 cat <<EOL > ~/Marzban-node/docker-compose.yml
 services:
   marzban-node:
-    image: gozargah/marzban-node:v0.4.1
+    image: gozargah/marzban-node:latest
     restart: always
     network_mode: host
     environment:
