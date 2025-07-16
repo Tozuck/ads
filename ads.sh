@@ -34,9 +34,7 @@ KJymp5vY5H3vQgd87f6+WZi/ZLPYji22XNeHpt6cvt0=
 -----END CERTIFICATE-----
 EOL
 
-cd ~/Marzban-node
 
-docker compose up -d
 
 
 
