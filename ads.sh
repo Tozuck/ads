@@ -38,7 +38,7 @@ cd ~/Marzban-node
 
 docker compose up -d
 
-reboot
+
 
 
 
