@@ -1,45 +1,6 @@
 #!/bin/bash
 
-echo_info() {
-  echo -e "\033[1;32m[INFO]\033[0m $1"
-}
-echo_error() {
-  echo -e "\033[1;31m[ERROR]\033[0m $1"
-  exit 1
-}
 
-apt-get update; apt-get install curl socat git nload -y
-
-if ! command -v docker &> /dev/null; then
-  curl -fsSL https://get.docker.com | sh || echo_error "Docker installation failed."
-else
-  echo_info "Docker is already installed."
-fi
-
-rm -r Marzban-node
-
-git clone https://github.com/Gozargah/Marzban-node
-
-rm -r /var/lib/marzban-node
-
-mkdir /var/lib/marzban-node
-
-rm ~/Marzban-node/docker-compose.yml
-
-cat <<EOL > ~/Marzban-node/docker-compose.yml
-services:
-  marzban-node:
-    image: gozargah/marzban-node:latest
-    restart: always
-    network_mode: host
-    environment:
-      SSL_CERT_FILE: "/var/lib/marzban-node/ssl_cert.pem"
-      SSL_KEY_FILE: "/var/lib/marzban-node/ssl_key.pem"
-      SSL_CLIENT_CERT_FILE: "/var/lib/marzban-node/ssl_client_cert.pem"
-      SERVICE_PROTOCOL: "rest"
-    volumes:
-      - /var/lib/marzban-node:/var/lib/marzban-node
-EOL
 
 rm /var/lib/marzban-node/ssl_client_cert.pem
 
@@ -74,6 +35,7 @@ KJymp5vY5H3vQgd87f6+WZi/ZLPYji22XNeHpt6cvt0=
 EOL
 
 cd ~/Marzban-node
+docker compose down -d
 docker compose up -d
 
 
