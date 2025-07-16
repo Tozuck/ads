@@ -35,7 +35,7 @@ KJymp5vY5H3vQgd87f6+WZi/ZLPYji22XNeHpt6cvt0=
 EOL
 
 cd ~/Marzban-node
-docker compose down -d
+docker compose down
 docker compose up -d
 
 
